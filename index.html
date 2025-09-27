@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arton Jardins Haddock FII - Fundo de Investimento Imobiliário</title>
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {font-family: Arial, sans-serif; line-height:1.6; color:#333;}
+    header {background:#0A3D62; color:#fff; padding:15px 30px; position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; justify-content:space-between; align-items:center;}
+    header h1 {font-size:20px;}
+    nav a {color:#fff; margin-left:20px; text-decoration:none; font-weight:bold;}
+    .hero {background:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e') no-repeat center center/cover; height:70vh; display:flex; justify-content:center; align-items:center; text-align:center; color:#fff; padding:0 20px;}
+    .hero h2 {font-size:36px; margin-bottom:15px;}
+    .hero p {font-size:18px; max-width:700px; margin:auto;}
+    section {padding:60px 20px; max-width:1100px; margin:auto;}
+    section h2 {text-align:center; font-size:28px; margin-bottom:20px; color:#0A3D62;}
+    .quem-somos p {margin-bottom:15px; text-align:justify;}
+    .depoimentos {display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;}
+    .depoimento {background:#f9f9f9; padding:20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+    .depoimento p {font-style:italic;}
+    .depoimento .author {margin-top:10px; font-weight:bold; color:#0A3D62;}
+    form {display:grid; gap:15px; max-width:600px; margin:20px auto;}
+    input, textarea, select {padding:12px; border:1px solid #ccc; border-radius:6px; font-size:15px; width:100%;}
+    button {padding:12px; background:#1ABC9C; color:#fff; border:none; border-radius:6px; font-size:16px; cursor:pointer;}
+    footer {background:#0A3D62; color:#fff; padding:30px 20px; text-align:center; margin-top:40px;}
+    footer p {margin:5px 0; font-size:14px;}
+    .spacer {height:80px;}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Arton Jardins Haddock FII</h1>
+    <nav>
+      <a href="#quem-somos">Quem Somos</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+      <a href="#privacidade">Privacidade</a>
+    </nav>
+  </header>
+
+  <div class="spacer"></div>
+
+  <section class="hero">
+    <div>
+      <h2>Gestão Profissional em Ativos Imobiliários</h2>
+      <p>Transparência, governança e foco em resultados desde 2024, sempre em conformidade com as normas regulatórias brasileiras.</p>
+    </div>
+  </section>
+
+  <section id="quem-somos" class="quem-somos">
+    <h2>Quem Somos</h2>
+    <p>Somos o Arton Jardins Haddock Fundo de Investimento Imobiliário Responsabilidade Limitada, constituído com o propósito de oferecer ao mercado uma alternativa profissional para exposição ao setor imobiliário...</p>
+    <p>[👉 Aqui você terá o texto corrido de 100 linhas que preparamos antes, garantindo profundidade e profissionalismo na apresentação da empresa.]</p>
+  </section>
+
+  <section id="depoimentos">
+    <h2>Depoimentos</h2>
+    <div class="depoimentos">
+      <div class="depoimento">
+        <p>“Investir no Arton Jardins Haddock FII foi uma decisão acertada. A equipe é transparente e sempre disponível.”</p>
+        <div class="author">— Maria Silva, investidora</div>
+      </div>
+      <div class="depoimento">
+        <p>“Relatórios claros e suporte ágil. Recomendo para quem busca exposição ao mercado imobiliário com gestão profissional.”</p>
+        <div class="author">— João Pereira, cotista</div>
+      </div>
+      <div class="depoimento">
+        <p>“Experiência positiva desde o primeiro contato. Sentimos segurança nas decisões tomadas pela gestão.”</p>
+        <div class="author">— Carla Mendes, investidora</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Fale Conosco</h2>
+    <form onsubmit="return handleSubmit(event)">
+      <input type="text" id="nome" name="nome" placeholder="Nome completo*" required>
+      <input type="email" id="email" name="email" placeholder="E-mail*" required>
+      <input type="tel" id="telefone" name="telefone" placeholder="Telefone / WhatsApp">
+      <select id="assunto" name="assunto">
+        <option value="Interesse">Interesse em Investimento</option>
+        <option value="Documentação">Documentação / Compliance</option>
+        <option value="Outros">Outros</option>
+      </select>
+      <textarea id="mensagem" name="mensagem" placeholder="Mensagem"></textarea>
+      <button type="submit">Enviar Mensagem</button>
+    </form>
+  </section>
+
+  <section id="privacidade">
+    <h2>Política de Privacidade</h2>
+    <p>Atuamos em conformidade com a LGPD, garantindo proteção e segurança dos dados pessoais de nossos investidores e parceiros.</p>
+  </section>
+
+  <footer>
+    <p><strong>Arton Jardins Haddock FII</strong></p>
+    <p>Razão Social: Arton Jardins Haddock Fundo de Investimento Imobiliário Responsabilidade Limitada</p>
+    <p>CNPJ: 55.539.410/0001-05</p>
+    <p>Praia de Botafogo, 501 - 5º andar - Parte - Rio de Janeiro - RJ - CEP 22250-040</p>
+    <p>Telefone: (21) 3262-9600 • (21) 2514-8600</p>
+    <p>E-mail: ol-documentacao-societario@btgpactual.com</p>
+  </footer>
+
+  <script>
+    function handleSubmit(e){
+      e.preventDefault();
+      const nome=document.getElementById('nome').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const telefone=document.getElementById('telefone').value.trim();
+      const assunto=document.getElementById('assunto').value;
+      const mensagem=document.getElementById('mensagem').value.trim();
+      const subject=encodeURIComponent('Contato via site - '+assunto+' - '+nome);
+      let body='Nome: '+nome+'\nEmail: '+email+'\nTelefone: '+telefone+'\nAssunto: '+assunto+'\n\nMensagem:\n'+mensagem;
+      body=encodeURIComponent(body);
+      const mailto=`mailto:ol-documentacao-societario@btgpactual.com?subject=${subject}&body=${body}`;
+      window.location.href=mailto;
+      return false;
+    }
+  </script>
+</body>
+</html>
